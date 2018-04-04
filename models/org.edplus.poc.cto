@@ -1,0 +1,63 @@
+/**
+
+ * Write your model definitions here
+
+ */
+
+
+
+namespace org.acme.bond
+
+
+
+enum SkillType {
+
+  o SIT
+
+  o BOW
+
+  o STAND
+
+  o WALK
+
+}
+
+
+
+participant Member identified by memberId {
+
+  o String memberId
+
+  o String name
+
+}
+
+
+
+participant Issuer extends Member {
+
+}
+
+
+
+asset BondAsset identified by badgeId {
+
+  o String badgeId
+
+  --> Member owner
+
+  --> Issuer issuer
+
+  o SkillType skill
+
+}
+
+transaction PublishBond {
+
+  o BondAsset bond
+
+}
+
+
+
+
